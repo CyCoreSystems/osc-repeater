@@ -9,7 +9,7 @@ builds:
         - linux
      goarch:
         - amd64
-     dir: ./cmd/osc-repeater
+     dir: ./
 archives:
    - id: osc-repeater
      format: binary
