@@ -1,0 +1,3 @@
+FROM gcr.io/distroless/base
+COPY osc-repeater /go/bin/osc-repeater
+ENTRYPOINT ["/go/bin/osc-repeater"]

@@ -1,0 +1,32 @@
+project_name: OSC Repeater
+builds:
+   - binary: osc-repeater
+     env:
+        - CGO_ENABLED=0
+     goos:
+        - windows
+        - darwin
+        - linux
+     goarch:
+        - amd64
+     dir: ./cmd/osc-repeater
+archives:
+   - id: osc-repeater
+     format: binary
+checksum:
+  name_template: 'checksums.txt'
+snapshot:
+  name_template: "{{ .Tag }}-next"
+changelog:
+  sort: asc
+  filters:
+    exclude:
+       - '^docs:'
+       - '^test:'
+dockers:
+  - dockerfile: Dockerfile.goreleaser
+    image_templates:
+       - "ghcr.io/cycoresystems/osc-repeater:{{ .Tag }}"
+       - "ghcr.io/cycoresystems/osc-repeater:v{{ .Major }}"
+       - "ghcr.io/cycoresystems/osc-repeater:v{{ .Major }}.{{ .Minor }}"
+       - ghcr.io/cycoresystems/osc-repeater:latest
